@@ -1,0 +1,228 @@
+/* Album Grid */
+.album-item {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.album-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Album image container */
+.album-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.album-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.album-item:hover .album-thumbnail img {
+    transform: scale(1.05);
+}
+
+/* Red overlay effect */
+.album-overlay {
+    background: rgba(255, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.album-item:hover .album-overlay {
+    opacity: 1;
+}
+
+.album-play-icon {
+    font-size: 30px;
+    color: #fff; /* Ensure the icon has a visible color */
+    background: rgba(0, 0, 0, 0.6);
+    width: 100px;
+    height: 100px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.album-item:hover .album-play-icon {
+    opacity: 1; /* Visible on hover */
+}
+
+.album-play-icon i {
+    font-size: 24px;
+}
+
+/* Row spacing */
+.row {
+    margin-bottom: 20px;
+}
+
+/* Custom Pagination Styles */
+.pagination {
+    margin-top: 30px;
+}
+
+.page-item.active .page-link {
+    background-color: #0073e6;
+    border-color: #0073e6;
+    color: #fff;
+}
+
+.page-link {
+    color: #0073e6;
+    border: 1px solid #dee2e6;
+    border-radius: 10% 10% 10% 10% !important;
+    margin: 10rem 10rem 10rem;
+    padding: 10rem 10rem 10rem 10rem !important;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    background-color: #f0f0f0;
+    border-color: #dee2e6;
+    color: #0073e6;
+}
+/* Artist Grid */
+.artist-item {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.artist-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Artist image container */
+.artist-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.artist-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.artist-item:hover .artist-thumbnail img {
+    transform: scale(1.05);
+}
+
+/* Red overlay effect */
+.artist-overlay {
+    background: rgba(255, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.artist-item:hover .artist-overlay {
+    opacity: 1;
+}
+
+.artist-icon {
+    font-size: 30px;
+    color: #fff; /* Ensure the icon has a visible color */
+    background: rgba(0, 0, 0, 0.6);
+    width: 100px;
+    height: 100px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.artist-item:hover .artist-icon {
+    opacity: 1; /* Visible on hover */
+}
+
+.artist-icon i {
+    font-size: 24px;
+}
+
+/* Tracks Grid */
+.track-item {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.track-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Track image container */
+.track-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.track-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.track-item:hover .track-thumbnail img {
+    transform: scale(1.05);
+}
+
+/* Red overlay effect */
+.track-overlay {
+    background: rgba(255, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.track-item:hover .track-overlay {
+    opacity: 1;
+}
+
+.track-icon {
+    font-size: 30px;
+    color: #fff; /* Ensure the icon has a visible color */
+    background: rgba(0, 0, 0, 0.6);
+    width: 100px;
+    height: 100px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.track-item:hover .track-icon {
+    opacity: 1; /* Visible on hover */
+}
+
+.track-icon i {
+    font-size: 24px;
+}
