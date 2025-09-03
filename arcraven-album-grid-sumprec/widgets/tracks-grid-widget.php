@@ -292,7 +292,8 @@ class Elementor_Tracks_Grid_Widget extends \Elementor\Widget_Base {
                 echo '<div class="track-thumbnail card-img-top position-relative">';
                 echo '<img src="' . esc_url($featured_image) . '" alt="' . esc_attr($title) . '" class="img-fluid">';
                 echo '<div class="track-overlay position-absolute top-0 start-0 w-100 h-100"></div>';
-                echo '<div class="track-icon position-absolute top-50 start-50 translate-middle">';
+                $track_url = get_post_meta($track->ID, '_track_url', true);
+                echo '<div class="track-icon position-absolute top-50 start-50 translate-middle" data-track-url="' . esc_url($track_url) . '">';
                 if (!empty($settings['icon']['value'])) {
                     $icon_size = !empty($settings['icon_size']['size']) ? $settings['icon_size']['size'] . $settings['icon_size']['unit'] : '24px';
                     echo '<i class="' . esc_attr($settings["icon"]["value"]) . '" style="font-size: ' . esc_attr($icon_size) . ';"></i>';
