@@ -46,40 +46,35 @@ jQuery(document).ready(function($) {
         audio.currentTime = percent * audio.duration;
     });
 
-    // When a track is clicked in the tracklist
-    $(document).on('click', '.play_single_music', function(e) {
-        e.preventDefault();
-        var musicId = $(this).data('musicid');
+    // Make an AJAX call to get the track URL
+    $.ajax({
+        url: sumprec_player_ajax_obj.ajaxurl, // Use the localized URL
+        type: 'POST',
+        data: {
+            action: 'get_track_url_from_id',
+            music_id: musicId,
+            nonce: sumprec_player_ajax_obj.nonce // Add the nonce for security
+        },
+        success: function(response) {
+            if (response.success && response.data.track_url) {
+                var trackUrl = response.data.track_url;
+                var trackIndex = playlist.indexOf(trackUrl);
 
-        // Make an AJAX call to get the track URL
-        $.ajax({
-            url: 'https://sumprec.com/wp-admin/admin-ajax.php', // This should ideally be localized
-            type: 'POST',
-            data: {
-                action: 'get_track_url_from_id',
-                music_id: musicId
-            },
-            success: function(response) {
-                if (response.success && response.data.track_url) {
-                    var trackUrl = response.data.track_url;
-                    var trackIndex = playlist.indexOf(trackUrl);
-
-                    if (trackIndex !== -1) {
-                        currentTrack = trackIndex;
-                    } else {
-                        playlist.push(trackUrl);
-                        currentTrack = playlist.length - 1;
-                    }
-                    playTrack(currentTrack);
+                if (trackIndex !== -1) {
+                    currentTrack = trackIndex;
                 } else {
-                    console.error('Error: Could not retrieve the track URL.');
-                    // You could add some user feedback here, like an alert.
+                    playlist.push(trackUrl);
+                    currentTrack = playlist.length - 1;
                 }
-            },
-            error: function() {
-                console.error('AJAX request failed.');
+                playTrack(currentTrack);
+            } else {
+                console.error('Error: Could not retrieve the track URL.');
+                // You could add some user feedback here, like an alert.
             }
-        });
+        },
+        error: function() {
+            console.error('AJAX request failed.');
+        }
     });
 
     function playTrack(trackIndex) {

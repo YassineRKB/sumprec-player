@@ -14,6 +14,13 @@ if (!defined('ABSPATH')) {
 function sumprec_player_audio_scripts() {
     wp_enqueue_style('sumprec-player-audio-css', plugins_url('player.css', __FILE__));
     wp_enqueue_script('sumprec-player-audio-js', plugins_url('player.js', __FILE__), array('jquery'), '1.0', true);
+
+    // Localize the script with new data
+    $script_data_array = array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('get_track_url_nonce')
+    );
+    wp_localize_script('sumprec-player-audio-js', 'sumprec_player_ajax_obj', $script_data_array);
 }
 add_action('wp_enqueue_scripts', 'sumprec_player_audio_scripts');
 
@@ -43,3 +50,19 @@ function sumprec_player_audio_footer() {
     <?php
 }
 add_action('wp_footer', 'sumprec_player_audio_footer');
+function get_track_url_from_id() {
+    if (isset($_POST['music_id'])) {
+        $music_id = intval($_POST['music_id']);
+        $track_url = get_post_meta($music_id, '_track_url', true);
+
+        if ($track_url) {
+            wp_send_json_success(array('track_url' => $track_url));
+        } else {
+            wp_send_json_error(array('message' => 'Track URL not found.'));
+        }
+    }
+    wp_die();
+}
+
+add_action('wp_ajax_get_track_url_from_id', 'get_track_url_from_id');
+add_action('wp_ajax_nopriv_get_track_url_from_id', 'get_track_url_from_id');
